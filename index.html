@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Abogado Virtual | Lic. Romer Rafael Ayala Cuevas</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4faf7;
+            color: #1a2c2e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #0f2c2b 0%, #1b5e4a 100%);
+            color: white;
+            padding: 2rem 2rem 1.8rem 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .hero-banner .contacto-datos i {
+            color: #c8f0e1;
+        }
+
+        .menu-horizontal {
+            background-color: #ffffff;
+            border-bottom: 3px solid #c8e6df;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-links li a:hover, 
+        .nav-links li .menu-text:hover {
+            background-color: #e0f2ec;
+            color: #0f5c4a;
+            border-radius: 8px;
+        }
+
+        .dropdown-menu {
+            border-top: 3px solid #1b5e4a;
+            max-height: 400px;
+            overflow-y: auto;
+            width: 260px;
+        }
+
+        .dropdown-menu li a {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #e0f2ec;
+            color: #0f5c4a;
+        }
+
+        .main-article h2 {
+            border-left-color: #1b5e4a;
+        }
+
+        .definicion-box {
+            background: #eef7f2;
+            border-left-color: #2c8c6e;
+        }
+
+        .btn-contacto, .btn-enviar {
+            background: #1b5e4a;
+        }
+        .btn-enviar:hover, .btn-contacto:hover {
+            background: #0f4c3a;
+        }
+
+        .contacto-seccion, .faq-section {
+            background: #eef7f2;
+        }
+
+        .sidebar h3, .faq-section h3 {
+            border-bottom-color: #c8e6df;
+        }
+
+        .servicio-dinamico {
+            background: #fef9e6;
+            border-left-color: #ffb347;
+        }
+
+        footer {
+            background: #0f2c2b;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.2s;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            background-color: #20b859;
+            transform: scale(1.05);
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #cbdcd6;
+        }
+        .faq-question {
+            background: #f9fefb;
+            padding: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question i {
+            transition: transform 0.2s;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: white;
+            padding: 0 1rem;
+            border-radius: 0 0 16px 16px;
+        }
+        .faq-answer p {
+            padding: 0.5rem 0 1rem 0;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .form-contacto {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .form-contacto input, .form-contacto textarea {
+            padding: 0.8rem 1rem;
+            border: 1px solid #cbdcd6;
+            border-radius: 28px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+        .form-contacto button {
+            background: #1b5e4a;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .form-contacto button:hover {
+            background: #0f4c3a;
+        }
+        .aviso-form {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            color: #4a6a5e;
+        }
+
+        .lista-especialidades {
+            margin-top: 1rem;
+        }
+        .especialidad-item {
+            margin-bottom: 0.8rem;
+            border-left: 3px solid #1b5e4a;
+            padding-left: 0.8rem;
+            font-size: 0.85rem;
+        }
+        .especialidad-item strong {
+            color: #1b5e4a;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        .badge-25 {
+            background: #1b5e4a;
+            color: white;
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        @media (max-width: 880px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 26px;
+                bottom: 20px;
+                right: 20px;
+            }
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: 1px solid #ddd;
+                margin-top: 0.5rem;
+                width: 100%;
+            }
+            .dropdown .dropdown-menu {
+                display: none;
+            }
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BANNER con foto y datos -->
+<div class="hero-banner">
+    <div class="banner-container" style="max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.5rem;">
+        <div class="foto-area">
+            <img src="mi-foto.jpg" alt="Foto Lic. Romer Rafael Ayala Cuevas" 
+                 onerror="this.src='https://ui-avatars.com/api/?background=1b5e4a&color=fff&name=R+Ayala';" style="width:130px; height:130px; object-fit:cover; border-radius:50%; border:4px solid #c8f0e1; box-shadow:0 8px 18px rgba(0,0,0,0.2);">
+            <p style="font-size: 0.7rem; margin-top: 6px; opacity: 0.8;">👤 Cambia esta imagen por tu foto</p>
+        </div>
+        <div class="info-lic" style="flex:2; min-width:220px;">
+            <h1 style="font-size:1.9rem;">Lic. Romer Rafael Ayala Cuevas</h1>
+            <div class="titulo-abogado" style="background:rgba(255,255,240,0.2); display:inline-block; padding:0.2rem 0.9rem; border-radius:40px;">⚖️ Abogado Virtual · Asesoría Legal Integral</div>
+            <div class="contacto-datos" style="display:flex; flex-wrap:wrap; gap:1.2rem; margin-top:0.5rem;">
+                <span><i class="fas fa-mobile-alt"></i> 809-2154245</span>
+                <span><i class="fas fa-envelope"></i> raya14197@gmail.com</span>
+                <span><i class="fas fa-map-marker-alt"></i> Santo Domingo, RD</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MENÚ HORIZONTAL: solo Inicio, Contacto y Servicio con 25 opciones -->
+<div class="menu-horizontal">
+    <div class="menu-container" style="max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; padding:0 1.5rem;">
+        <ul class="nav-links" style="display:flex; flex-wrap:wrap; list-style:none; gap:0.2rem; align-items:center;">
+            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#contacto-sec"><i class="fas fa-address-card"></i> Contacto</a></li>
+            <li class="dropdown" style="position:relative;">
+                <span class="menu-text"><i class="fas fa-gavel"></i> Servicio <i class="fas fa-chevron-down"></i></span>
+                <ul class="dropdown-menu" style="position:absolute; top:100%; left:0; background:white; min-width:260px; box-shadow:0 12px 25px rgba(0,0,0,0.1); border-radius:16px; list-style:none; padding:0.6rem 0; opacity:0; visibility:hidden; transition:all 0.2s; z-index:200; overflow-y:auto; max-height:400px;">
+                    <!-- 25 servicios -->
+                    <li><a href="#" data-servicio="civil">📄 Derecho Civil</a></li>
+                    <li><a href="#" data-servicio="penal">⚖️ Derecho Penal</a></li>
+                    <li><a href="#" data-servicio="procedimiento">📑 Código de Procedimiento Civil</a></li>
+                    <li><a href="#" data-servicio="laboral">👔 Derecho Laboral</a></li>
+                    <li><a href="#" data-servicio="constitucional">🏛️ Derecho Constitucional</a></li>
+                    <li><a href="#" data-servicio="administrativo">📂 Derecho Administrativo</a></li>
+                    <li><a href="#" data-servicio="mercantil">💼 Derecho Mercantil</a></li>
+                    <li><a href="#" data-servicio="internacional">🌐 Derecho Internacional</a></li>
+                    <li><a href="#" data-servicio="tributario">💰 Derecho Tributario</a></li>
+                    <li><a href="#" data-servicio="agrario">🌾 Derecho Agrario</a></li>
+                    <li><a href="#" data-servicio="informatico">💻 Derecho Informático</a></li>
+                    <li><a href="#" data-servicio="ambiental">🌿 Derecho Ambiental</a></li>
+                    <li><a href="#" data-servicio="familia">👨‍👩‍👧 Derecho de Familia</a></li>
+                    <li><a href="#" data-servicio="sucesorio">📜 Derecho Sucesorio</a></li>
+                    <li><a href="#" data-servicio="contractual">✍️ Derecho Contractual</a></li>
+                    <li><a href="#" data-servicio="inmobiliario">🏠 Derecho Inmobiliario</a></li>
+                    <li><a href="#" data-servicio="bancario">🏦 Derecho Bancario</a></li>
+                    <li><a href="#" data-servicio="seguros">🛡️ Derecho de Seguros</a></li>
+                    <li><a href="#" data-servicio="maritimo">🚢 Derecho Marítimo</a></li>
+                    <li><a href="#" data-servicio="aereo">✈️ Derecho Aéreo</a></li>
+                    <li><a href="#" data-servicio="deportivo">⚽ Derecho Deportivo</a></li>
+                    <li><a href="#" data-servicio="salud">🏥 Derecho de la Salud</a></li>
+                    <li><a href="#" data-servicio="educacion">📚 Derecho de la Educación</a></li>
+                    <li><a href="#" data-servicio="competencia">📊 Derecho de la Competencia</a></li>
+                    <li><a href="#" data-servicio="consumo">🛒 Derecho del Consumo</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a href="https://wa.me/18092154245?text=Hola%20Lic.%20Romer%2C%20necesito%20asesor%C3%ADa%20legal." class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- CUERPO PRINCIPAL -->
+<div class="blog-content" id="inicio" style="max-width:1280px; margin:2.5rem auto; padding:0 1.5rem;">
+    <div class="blog-grid" style="display:grid; grid-template-columns:2fr 1fr; gap:2rem;">
+        <!-- ARTÍCULO PRINCIPAL (izquierda) -->
+        <div class="main-article" style="background:white; border-radius:28px; padding:2rem; box-shadow:0 6px 18px rgba(0,0,0,0.03);">
+            <h2>📖 El Derecho: Definición y fundamentos</h2>
+            <div class="definicion-box" style="background:#eef7f2; border-left:4px solid #2c8c6e; padding:1rem 1.5rem; margin:1.2rem 0; border-radius:20px;">
+                <strong>🔹 Definición de Derecho:</strong> El Derecho es el conjunto de normas jurídicas, principios y disposiciones que regulan la conducta humana en sociedad, con el objetivo de garantizar la justicia, la seguridad, el orden y la convivencia pacífica. Se divide en Derecho objetivo (las leyes) y Derecho subjetivo (facultades de las personas). Es un sistema dinámico que evoluciona con la historia y las necesidades sociales.
+            </div>
+            
+            <h3>⚖️ Ramas del Derecho (definiciones clave)</h3>
+            <div class="definicion-box" style="background:#eef7f2; border-left-color:#2c8c6e;">
+                <p><strong>📌 Derecho Civil:</strong> Rama del Derecho privado que regula las relaciones entre personas (físicas o jurídicas) en aspectos como la familia, el patrimonio, los contratos, las obligaciones, los bienes y las sucesiones. Es la base del orden jurídico cotidiano.</p>
+                <p><strong>📌 Derecho Penal:</strong> Conjunto de normas que definen los delitos, las penas y las medidas de seguridad. Su finalidad es proteger bienes jurídicos esenciales (vida, libertad, propiedad) y sancionar conductas antisociales mediante el poder punitivo del Estado.</p>
+                <p><strong>📌 Código de Procedimiento Civil:</strong> Cuerpo normativo que establece las reglas procesales para hacer valer los derechos civiles ante los tribunales. Regula desde la demanda hasta la sentencia, incluyendo recursos, ejecuciones, pruebas y plazos. Es el “manual del litigio civil”.</p>
+                <p><strong>📌 Otras ramas destacadas:</strong> Derecho Laboral, Derecho Constitucional, Derecho Administrativo, Derecho Mercantil, Derecho Internacional, Derecho Tributario, Derecho Agrario, Derecho Informático, y más de 25 especialidades a tu disposición.</p>
+            </div>
+            <div class="ramas-lista" style="display:flex; flex-wrap:wrap; gap:0.8rem; margin:1rem 0 1.5rem;">
+                <span>Derecho Civil</span><span>Derecho Penal</span><span>Derecho Laboral</span><span>Derecho Constitucional</span>
+                <span>Derecho Administrativo</span><span>Derecho Mercantil</span><span>Derecho Procesal Civil</span><span>Derecho Internacional</span>
+                <span>Derecho Tributario</span><span>Derecho Agrario</span><span>Derecho Informático</span><span>Derecho Ambiental</span>
+            </div>
+
+            <h3>📜 Eventos históricos del Derecho (lista completa y definitiva)</h3>
+            <ul class="eventos-list" style="list-style:none; padding-left:0;">
+                <li><i class="fas fa-scroll"></i> <strong>Código de Hammurabi (1750 a.C.)</strong> – Primer conjunto de leyes escritas conocido. 282 artículos grabados en una estela de diorita. Base del "ojo por ojo".</li>
+                <li><i class="fas fa-landmark"></i> <strong>Ley de las XII Tablas (451 a.C.)</strong> – Fundamento del Derecho romano. Primer código de la República romana que igualaba a patricios y plebeyos.</li>
+                <li><i class="fas fa-balance-scale"></i> <strong>Corpus Iuris Civilis (529 d.C.)</strong> – Recopilación del emperador Justiniano. Base del Derecho continental europeo y del civil law.</li>
+                <li><i class="fas fa-france"></i> <strong>Código Napoleónico (1804)</strong> – Código civil francés que inspiró la mayoría de los códigos civiles del mundo, incluidos los latinoamericanos.</li>
+                <li><i class="fas fa-globe-americas"></i> <strong>Declaración Universal de los Derechos Humanos (1948)</strong> – Hito del Derecho Internacional. Proclama derechos inherentes a toda persona.</li>
+                <li><i class="fas fa-europe"></i> <strong>Tratado de Roma (1957)</strong> – Creación de la Comunidad Económica Europea, origen del Derecho comunitario y supranacional.</li>
+                <li><i class="fas fa-gavel"></i> <strong>Constitución de Cádiz (1812)</strong> – Primera constitución española, conocida como "La Pepa". Estableció la soberanía nacional.</li>
+                <li><i class="fas fa-church"></i> <strong>Derecho Canónico (Edad Media)</strong> – Conjunto de normas de la Iglesia Católica que influyó en el derecho de familia y sucesiones.</li>
+                <li><i class="fas fa-feather-alt"></i> <strong>Carta Magna (1215)</strong> – Documento inglés que limitó el poder del rey y garantizó derechos a los nobles. Precursor del constitucionalismo.</li>
+                <li><i class="fas fa-balance-scale"></i> <strong>Habeas Corpus Act (1679)</strong> – Ley inglesa que protege la libertad individual contra detenciones arbitrarias.</li>
+                <li><i class="fas fa-gavel"></i> <strong>Bill of Rights (1689)</strong> – Declaración de derechos inglesa que inspiró las modernas declaraciones de derechos.</li>
+                <li><i class="fas fa-fist-raised"></i> <strong>Declaración de Independencia de EE.UU. (1776)</strong> – Proclamó derechos naturales y el derecho a la revolución.</li>
+                <li><i class="fas fa-landmark"></i> <strong>Constitución de EE.UU. (1787)</strong> – Primera constitución escrita moderna, con sistema de frenos y contrapesos.</li>
+                <li><i class="fas fa-france"></i> <strong>Declaración de los Derechos del Hombre y del Ciudadano (1789)</strong> – Documento revolucionario francés que consagró libertad, propiedad y resistencia a la opresión.</li>
+                <li><i class="fas fa-balance-scale"></i> <strong>Código Penal de 1791 (Francia)</strong> – Primer código penal moderno que abolió la tortura y estableció penas proporcionales.</li>
+                <li><i class="fas fa-gavel"></i> <strong>Código de Comercio francés (1807)</strong> – Base del derecho mercantil contemporáneo.</li>
+                <li><i class="fas fa-globe-americas"></i> <strong>Convenios de Ginebra (1864-1949)</strong> – Regulan el derecho internacional humanitario y la protección de víctimas de guerra.</li>
+                <li><i class="fas fa-chalkboard-teacher"></i> <strong>Constitución Mexicana de 1917</strong> – Primera constitución que incluyó derechos sociales (laborales, agrarios).</li>
+                <li><i class="fas fa-globe-americas"></i> <strong>Constitución de Weimar (1919)</strong> – Primera constitución alemana democrática, con avanzados derechos sociales.</li>
+                <li><i class="fas fa-balance-scale"></i> <strong>Estatuto de la Corte Internacional de Justicia (1945)</strong> – Creación de la CIJ como principal órgano judicial de la ONU.</li>
+                <li><i class="fas fa-gavel"></i> <strong>Convención Europea de Derechos Humanos (1950)</strong> – Tratado internacional que protege derechos civiles y políticos en Europa.</li>
+                <li><i class="fas fa-globe-americas"></i> <strong>Pacto Internacional de Derechos Civiles y Políticos (1966)</strong> – Tratado de la ONU que desarrolla la Declaración Universal.</li>
+                <li><i class="fas fa-globe-americas"></i> <strong>Pacto Internacional de Derechos Económicos, Sociales y Culturales (1966)</strong> – Complementa los derechos de segunda generación.</li>
+                <li><i class="fas fa-gavel"></i> <strong>Estatuto de Roma (1998)</strong> – Creación de la Corte Penal Internacional para juzgar genocidio, crímenes de guerra y lesa humanidad.</li>
+                <li><i class="fas fa-balance-scale"></i> <strong>Convención sobre la Eliminación de todas las formas de Discriminación contra la Mujer (1979)</strong> – Instrumento internacional clave para la igualdad de género.</li>
+                <li><i class="fas fa-gavel"></i> <strong>Convención de los Derechos del Niño (1989)</strong> – Tratado más ratificado de la historia, protege a los niños.</li>
+                <li><i class="fas fa-globe-americas"></i> <strong>Acuerdo de París (2015)</strong> – Tratado internacional sobre cambio climático, vinculante para el derecho ambiental global.</li>
+                <li><i class="fas fa-digital-tiling"></i> <strong>Reglamento General de Protección de Datos (GDPR) (2018)</strong> – Norma europea que transformó el derecho informático y la privacidad digital.</li>
+            </ul>
+            <p style="margin-top: 1rem;">Estos hitos demuestran la evolución del derecho como herramienta de cambio social. En la práctica actual, el <strong>Lic. Romer Rafael Ayala Cuevas</strong> ofrece asesoría experta en más de <strong>25 especialidades jurídicas</strong>, con un enfoque ético y estratégico.</p>
+        </div>
+
+        <!-- SIDEBAR DERECHO (ampliado con toda la información de especialidades) -->
+        <div class="sidebar" style="background:white; border-radius:28px; padding:1.8rem; display: flex; flex-direction: column; gap: 1.5rem;">
+            <div>
+                <h3><i class="fas fa-briefcase"></i> Áreas de práctica</h3>
+                <p>Consulta nuestros <strong>25 servicios especializados</strong>. Haz clic en cualquier opción del menú <strong>"Servicio"</strong>:</p>
+                <div class="servicio-dinamico" id="infoServicioBox" style="background:#fef9e6; padding:1.2rem; border-radius:20px; border-left:4px solid #ffb347;">
+                    <p><i class="fas fa-info-circle"></i> <strong>Selecciona un servicio</strong><br>Elija una de las 25 ramas del menú desplegable para obtener información detallada.</p>
+                </div>
+            </div>
+            
+            <div>
+                <div class="badge-25">🎯 25 ESPECIALIDADES LEGALES</div>
+                <div class="lista-especialidades">
+                    <div class="especialidad-item"><strong>📄 Derecho Civil</strong> Familia, contratos, sucesiones, propiedad.</div>
+                    <div class="especialidad-item"><strong>⚖️ Derecho Penal</strong> Defensa penal, querellas, delitos.</div>
+                    <div class="especialidad-item"><strong>📑 Código de Procedimiento Civil</strong> Demandas, recursos, ejecuciones.</div>
+                    <div class="especialidad-item"><strong>👔 Derecho Laboral</strong> Despidos, salarios, seguridad social.</div>
+                    <div class="especialidad-item"><strong>🏛️ Derecho Constitucional</strong> Amparo, derechos fundamentales.</div>
+                    <div class="especialidad-item"><strong>📂 Derecho Administrativo</strong> Contratos estatales, licencias.</div>
+                    <div class="especialidad-item"><strong>💼 Derecho Mercantil</strong> Sociedades, quiebras, propiedad industrial.</div>
+                    <div class="especialidad-item"><strong>🌐 Derecho Internacional</strong> Tratados, extradiciones.</div>
+                    <div class="especialidad-item"><strong>💰 Derecho Tributario</strong> Impuestos, planificación fiscal.</div>
+                    <div class="especialidad-item"><strong>🌾 Derecho Agrario</strong> Tierras, reforma agraria.</div>
+                    <div class="especialidad-item"><strong>💻 Derecho Informático</strong> Datos personales, delitos informáticos.</div>
+                    <div class="especialidad-item"><strong>🌿 Derecho Ambiental</strong> Licencias, impacto ecológico.</div>
+                    <div class="especialidad-item"><strong>👨‍👩‍👧 Derecho de Familia</strong> Divorcios, custodias, alimentos.</div>
+                    <div class="especialidad-item"><strong>📜 Derecho Sucesorio</strong> Testamentos, herencias.</div>
+                    <div class="especialidad-item"><strong>✍️ Derecho Contractual</strong> Elaboración y resolución de contratos.</div>
+                    <div class="especialidad-item"><strong>🏠 Derecho Inmobiliario</strong> Compraventa, arrendamientos.</div>
+                    <div class="especialidad-item"><strong>🏦 Derecho Bancario</strong> Créditos, garantías bancarias.</div>
+                    <div class="especialidad-item"><strong>🛡️ Derecho de Seguros</strong> Pólizas, siniestros.</div>
+                    <div class="especialidad-item"><strong>🚢 Derecho Marítimo</strong> Transporte naval, seguros marítimos.</div>
+                    <div class="especialidad-item"><strong>✈️ Derecho Aéreo</strong> Responsabilidad de aerolíneas.</div>
+                    <div class="especialidad-item"><strong>⚽ Derecho Deportivo</strong> Contratos de atletas, imagen.</div>
+                    <div class="especialidad-item"><strong>🏥 Derecho de la Salud</strong> Responsabilidad médica.</div>
+                    <div class="especialidad-item"><strong>📚 Derecho de la Educación</strong> Regulación universitaria.</div>
+                    <div class="especialidad-item"><strong>📊 Derecho de la Competencia</strong> Monopolios, libre mercado.</div>
+                    <div class="especialidad-item"><strong>🛒 Derecho del Consumo</strong> Garantías, protección al consumidor.</div>
+                </div>
+            </div>
+            
+            <div style="background: #eef7f2; border-radius: 20px; padding: 1rem; margin-top: 0.5rem;">
+                <i class="fas fa-star-of-life" style="color:#1b5e4a;"></i> <strong>Ventajas de contratarnos</strong>
+                <ul style="margin-left: 1.2rem; margin-top: 0.5rem; font-size: 0.85rem;">
+                    <li>✔️ Consulta virtual 24/7</li>
+                    <li>✔️ Respuesta rápida (máximo 2 horas)</li>
+                    <li>✔️ Experiencia en tribunales</li>
+                    <li>✔️ Honorarios competitivos</li>
+                    <li>✔️ Confidencialidad absoluta</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin-top: 0.5rem;">
+                <i class="fas fa-clock"></i> Horario: Lunes a Viernes 8am - 8pm<br>
+                <i class="fas fa-globe"></i> Atención en todo el país
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN FAQ (Preguntas frecuentes) -->
+    <div class="faq-section" id="faq" style="background:#eef7f2; border-radius:28px; margin-top:2rem; padding:2rem;">
+        <h3><i class="fas fa-question-circle"></i> Preguntas Frecuentes (FAQ) y más ramas del Derecho</h3>
+        <div class="faq-container" style="margin-top:1.5rem;">
+            <div class="faq-item">
+                <div class="faq-question"><span>📌 ¿Qué es el Derecho Laboral?</span> <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Regula las relaciones entre empleadores y trabajadores, incluyendo contratos, salarios, jornada, seguridad social y despidos. Protege los derechos del trabajador.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><span>⚖️ ¿En qué consiste el Derecho Constitucional?</span> <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Estudia la organización del Estado, los poderes públicos y los derechos fundamentales consagrados en la constitución. Es la rama que limita el poder estatal.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><span>📂 ¿Qué diferencia hay entre Derecho Civil y Código de Procedimiento Civil?</span> <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>El Derecho Civil establece los derechos sustantivos (contratos, familia, propiedad), mientras que el Código de Procedimiento Civil regula cómo hacer valer esos derechos ante los tribunales (demandas, recursos, ejecución).</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><span>🔍 ¿Qué es el Derecho Administrativo?</span> <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Regula la organización y funcionamiento de la administración pública, así como las relaciones entre los ciudadanos y el Estado (contratos estatales, servicios públicos, empleo público).</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><span>🌐 ¿Qué abarca el Derecho Internacional?</span> <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Se divide en Derecho Internacional Público (relaciones entre estados, tratados, derechos humanos) y Privado (conflictos de leyes, comercio internacional).</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE CONTACTO + FORMULARIO -->
+    <div id="contacto-sec" class="contacto-seccion" style="background:#eef7f2; border-radius:28px; margin-top:2rem; padding:2rem; text-align:center;">
+        <h3><i class="fas fa-envelope-open-text"></i> Contáctanos directamente</h3>
+        <p style="margin-bottom: 0.5rem;">📞 <strong>Teléfono:</strong> 809-2154245 &nbsp;&nbsp;|&nbsp;&nbsp; ✉️ <strong>Email:</strong> raya14197@gmail.com</p>
+        <p><i class="fas fa-clock"></i> Disponibilidad inmediata para consultas. Escriba o llame sin compromiso.</p>
+        
+        <form class="form-contacto" action="mailto:raya14197@gmail.com" method="post" enctype="text/plain">
+            <input type="text" name="nombre" placeholder="Tu nombre completo" required>
+            <input type="email" name="correo" placeholder="Tu correo electrónico" required>
+            <input type="tel" name="telefono" placeholder="Teléfono (opcional)">
+            <textarea name="mensaje" rows="4" placeholder="Escribe tu consulta legal aquí..." required></textarea>
+            <button type="submit" class="btn-enviar"><i class="fas fa-paper-plane"></i> Enviar mensaje</button>
+        </form>
+        <p class="aviso-form">📩 Al hacer clic en Enviar, se abrirá tu cliente de correo. También puedes escribirnos directamente al email o WhatsApp.</p>
+        
+        <div style="margin-top: 1.5rem;">
+            <a href="mailto:raya14197@gmail.com" class="btn-contacto" style="display:inline-flex; align-items:center; gap:8px; background:#1b5e4a; padding:0.6rem 1.5rem; border-radius:40px; color:white; text-decoration:none; margin:0 5px;"><i class="fas fa-envelope"></i> Enviar correo</a>
+            <a href="tel:+18092154245" class="btn-contacto" style="display:inline-flex; align-items:center; gap:8px; background:#3b7b5e; padding:0.6rem 1.5rem; border-radius:40px; color:white; text-decoration:none; margin:0 5px;"><i class="fas fa-phone"></i> Llamar</a>
+        </div>
+    </div>
+</div>
+
+<footer style="background:#0f2c2b; color:#cddfe7; text-align:center; padding:1.8rem; margin-top:3rem;">
+    <p>© 2025 Abogado Virtual · Lic. Romer Rafael Ayala Cuevas · Cel. 809-2154245 · Email: raya14197@gmail.com</p>
+    <p>Más de 25 especialidades legales: Civil, Penal, Laboral, Constitucional, Mercantil, Internacional y más.</p>
+    <p><i class="fas fa-balance-scale"></i> "Defendemos tus derechos con excelencia y compromiso"</p>
+</footer>
+
+<script>
+    // Dropdown hover/click
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    if(dropdown && dropdownMenu) {
+        dropdown.addEventListener('mouseenter', () => {
+            if(window.innerWidth > 880) {
+                dropdownMenu.style.opacity = '1';
+                dropdownMenu.style.visibility = 'visible';
+                dropdownMenu.style.transform = 'translateY(0)';
+            }
+        });
+        dropdown.addEventListener('mouseleave', () => {
+            if(window.innerWidth > 880) {
+                dropdownMenu.style.opacity = '0';
+                dropdownMenu.style.visibility = 'hidden';
+                dropdownMenu.style.transform = 'translateY(10px)';
+            }
+        });
+        const menuText = dropdown.querySelector('.menu-text');
+        menuText.addEventListener('click', (e) => {
+            if(window.innerWidth <= 880) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+                dropdownMenu.style.display = dropdown.classList.contains('active') ? 'block' : 'none';
+            }
+        });
+    }
+
+    // Descripciones de servicios
+    const descripciones = {
+        civil: "📄 Derecho Civil: contratos, familia, sucesiones, propiedades, obligaciones. Asesoría integral en el ámbito privado.",
+        penal: "⚖️ Derecho Penal: defensa en delitos, querellas, medidas cautelares, representación en juicios orales.",
+        procedimiento: "📑 Código de Procedimiento Civil: demandas, recursos, ejecución de sentencias, medidas preparatorias.",
+        laboral: "👔 Derecho Laboral: contratos, despidos, reclamaciones salariales, seguridad social, acoso laboral.",
+        constitucional: "🏛️ Derecho Constitucional: amparo, hábeas corpus, control de constitucionalidad, derechos fundamentales.",
+        administrativo: "📂 Derecho Administrativo: contratación pública, licencias, responsabilidad del Estado, procedimientos administrativos.",
+        mercantil: "💼 Derecho Mercantil: sociedades, títulos valores, contratos comerciales, quiebras, propiedad industrial.",
+        internacional: "🌐 Derecho Internacional: tratados, inversiones extranjeras, derecho comunitario, extradiciones.",
+        tributario: "💰 Derecho Tributario: impuestos, declaraciones, recursos fiscales, planificación tributaria.",
+        agrario: "🌾 Derecho Agrario: tenencia de tierras, reforma agraria, contratos rurales, explotación agrícola.",
+        informatico: "💻 Derecho Informático: protección de datos, delitos informáticos, comercio electrónico, firmas digitales.",
+        ambiental: "🌿 Derecho Ambiental: licencias ambientales, impactos ecológicos, responsabilidad por daños, áreas protegidas.",
+        familia: "👨‍👩‍👧 Derecho de Familia: divorcios, custodias, alimentos, patria potestad, adopciones.",
+        sucesorio: "📜 Derecho Sucesorio: testamentos, herencias, particiones, legítimas, albaceazgos.",
+        contractual: "✍️ Derecho Contractual: elaboración, interpretación y resolución de contratos civiles y mercantiles.",
+        inmobiliario: "🏠 Derecho Inmobiliario: compraventa de inmuebles, arrendamientos, usufructos, hipotecas.",
+        bancario: "🏦 Derecho Bancario: operaciones financieras, créditos, garantías, contratos bancarios, protección al consumidor financiero.",
+        seguros: "🛡️ Derecho de Seguros: pólizas, siniestros, coberturas, responsabilidad civil aseguradora.",
+        maritimo: "🚢 Derecho Marítimo: transporte marítimo, seguros navales, accidentes, contratos de fletamento.",
+        aereo: "✈️ Derecho Aéreo: responsabilidad de aerolíneas, convenios internacionales, derechos de pasajeros.",
+        deportivo: "⚽ Derecho Deportivo: contratos de atletas, derecho de imagen, resolución de disputas deportivas.",
+        salud: "🏥 Derecho de la Salud: responsabilidad médica, consentimiento informado, derechos de pacientes, biotecnología.",
+        educacion: "📚 Derecho de la Educación: acceso a la educación, regulación universitaria, becas, acoso escolar.",
+        competencia: "📊 Derecho de la Competencia: libre mercado, monopolios, concentraciones económicas, prácticas anticompetitivas.",
+        consumo: "🛒 Derecho del Consumo: garantías, publicidad engañosa, cláusulas abusivas, protección al consumidor."
+    };
+
+    const infoBox = document.getElementById('infoServicioBox');
+    function mostrarServicio(clave) {
+        const texto = descripciones[clave] || "Información detallada sobre este servicio. Consulte directamente con el Lic. Romer Rafael Ayala Cuevas.";
+        if(infoBox) {
+            infoBox.innerHTML = `<p><i class="fas fa-gavel"></i> <strong>${texto.split(':')[0]}</strong></p><p>${texto.includes(':') ? texto.substring(texto.indexOf(':')+1) : texto}</p><p style="margin-top:8px;">📞 Para más información, contáctenos al 809-2154245 o vía WhatsApp.</p>`;
+            infoBox.style.backgroundColor = '#fff6e6';
+            setTimeout(() => { if(infoBox) infoBox.style.backgroundColor = '#fef9e6'; }, 200);
+        }
+    }
+    document.querySelectorAll('.dropdown-menu li a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const servicio = link.getAttribute('data-servicio');
+            if(servicio) mostrarServicio(servicio);
+            if(window.innerWidth <= 880) {
+                dropdown.classList.remove('active');
+                if(dropdownMenu) dropdownMenu.style.display = 'none';
+            }
+        });
+    });
+
+    // Acordeón FAQ
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            item.classList.toggle('active');
+        });
+    });
+
+    // Smooth scroll
+    document.querySelector('a[href="#inicio"]')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelector('#inicio').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.querySelector('a[href="#contacto-sec"]')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelector('#contacto-sec').scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+</body>
+</html>
